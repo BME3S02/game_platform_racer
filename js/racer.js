@@ -1580,17 +1580,6 @@ Dom.on('maxTime',        'change',
 function(ev) { /*console.log("changing");*/
 Dom.blur(ev);
 reset({ maxTime:       Util.limit(Util.toInt(ev.target.value), Util.toInt(ev.target.getAttribute('min')), Util.toInt(ev.target.getAttribute('max'))) });
-if(Stage.stagePtr < Stage.stageList.length-1)
-{
-	clearTimeout(Stage.changeStage);
-	setTimeout(Stage.changeStage, maxTime * 1000);
-}
-else if(Stage.stagePtr == Stage.stageList.length-1)
-{
-	clearTimeout(stop);
-	setTimeout(stop, maxTime * 1000);
-}
-
 });
 
 function startGame(){
