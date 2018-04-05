@@ -1149,8 +1149,8 @@ for(n = 0 ; n < playerSegment.cars.length ; n++) {
 	carW = car.sprite.w * SPRITES.SCALE;
 	if (speed > car.speed) {
 		if (Util.overlap(playerX, playerW, car.offset, carW, 0.8)) {
-					var audio = new Audio('music/crash.mp3');
-			audio.play();
+			// var audio = new Audio('music/crash.mp3');
+			// audio.play();
 			speed    = car.speed * (car.speed/speed);
 			position = Util.increase(car.z, -playerZ, trackLength);
 			break;
