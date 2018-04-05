@@ -252,9 +252,8 @@ if (!window.requestAnimationFrame) { // http://paulirish.com/2011/requestanimati
 //=========================================================================
 
 var Game = {  // a modified version of the game loop from my previous boulderdash game - see http://codeincomplete.com/posts/2011/10/25/javascript_boulderdash/#gameloop
-  stagelist: [1,2,3,4,5,6,7,8,9],
+  stagelist: [1,2,3],
   init: function () {
-    Util.shuffle(stagelist);
   },
   run: function(options) {
 
@@ -505,7 +504,7 @@ var Render = {
 //=============================================================================
 
 var Stage = {
-    stageList : [1,2,3,4,5,6,7,8],
+    stageList : [1,2,3],
     NewGame: true,
     stagePtr: 0,
     nextLevel: function(){
@@ -1606,7 +1605,6 @@ ready: function(images) {
 	reset();
 	//Dom.storage.fast_lap_time = Dom.storage.fast_lap_time || 180;
 	displayToast("開始");
-	Stage.stageList = Util.shuffle(Stage.stageList);
 	console.log(Stage.stageList);
 	setTimeout(Stage.changeStage, maxTime * 1000);
 }
