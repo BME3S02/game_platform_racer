@@ -1084,6 +1084,7 @@ segments       = [];                      // array of road segments
 		totalCars      = $("#totalCars").val();                     // total number of cars on the road
 		currentLapTime = 0;                       // current lap time
 		lastLapTime    = null;                    // last lap time
+		numOfCrash     = 0;
 		keyLeft        = false;
 		keyRight       = false;
 		keyFaster      = true;
@@ -1093,6 +1094,8 @@ segments       = [];                      // array of road segments
 hud = {
 			speed:            { value: null, dom: Dom.get('speed_value')            },
 			current_lap_time: { value: null, dom: Dom.get('current_lap_time_value') },
+			crash:            { value: null, dom: Dom.get('crash_value')            },
+			score:            { value: null, dom: Dom.get('score_value')            },
 			last_lap_time:    { value: null, dom: Dom.get('last_lap_time_value')    },
 			fast_lap_time:    { value: null, dom: Dom.get('fast_lap_time_value')    }
 		}
@@ -1150,6 +1153,7 @@ for(n = 0 ; n < playerSegment.cars.length ; n++) {
 		if (Util.overlap(playerX, playerW, car.offset, carW, 0.8)) {
 			// var audio = new Audio('music/crash.mp3');
 			// audio.play();
+			numOfCrash += 1;
 			speed    = car.speed * (car.speed/speed);
 			position = Util.increase(car.z, -playerZ, trackLength);
 			break;
@@ -1173,7 +1177,6 @@ if (position > playerZ) {
 		//currentLapTime = 0;
 		if (lastLapTime <= Util.toFloat(Dom.storage.fast_lap_time)) {
 			Dom.storage.fast_lap_time = lastLapTime;
-			updateHud('fast_lap_time', formatTime(lastLapTime));
 			Dom.addClassName('fast_lap_time', 'fastest');
 			Dom.addClassName('last_lap_time', 'fastest');
 		}
@@ -1191,6 +1194,8 @@ if (position > playerZ) {
 
 updateHud('speed',            5 * Math.round(speed/500));
 updateHud('current_lap_time', formatTime(currentLapTime));
+updateHud('crash', numOfCrash);
+updateHud('score', Math.round(15000 + currentLapTime * 100 - numOfCrash * 20));
 }
 
 //-------------------------------------------------------------------------
