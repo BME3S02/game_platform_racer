@@ -1021,6 +1021,7 @@ function reset(options) {
 function stop(){
 
  document.dispatchEvent(new Event('finished'));
+ isFinished = true;
  keyLeft = keyRight = keySlower = keyFaster = false;
  displayToast("遊戲結束","inf");
  fire();
@@ -1085,6 +1086,7 @@ segments       = [];                      // array of road segments
 		currentLapTime = 0;                       // current lap time
 		lastLapTime    = null;                    // last lap time
 		numOfCrash     = 0;
+		isFinished     = false;
 		keyLeft        = false;
 		keyRight       = false;
 		keyFaster      = true;
@@ -1193,9 +1195,11 @@ if (position > playerZ) {
 }
 
 updateHud('speed',            5 * Math.round(speed/500));
-updateHud('current_lap_time', formatTime(currentLapTime));
-updateHud('crash', numOfCrash);
-updateHud('score', Math.round(15000 + currentLapTime * 100 - numOfCrash * 20));
+if(!isFinished) {
+	updateHud('current_lap_time', formatTime(currentLapTime));
+	updateHud('crash', numOfCrash);
+	updateHud('score', Math.round(15000 + currentLapTime * 100 - numOfCrash * 20));
+}
 }
 
 //-------------------------------------------------------------------------
