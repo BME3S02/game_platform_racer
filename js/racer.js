@@ -535,12 +535,12 @@ var Stage = {
           //updateHud('fast_lap_time', formatTime(Util.toFloat(Dom.storage.fast_lap_time)));
         }
       );
-      var audio = document.getElementById("music");
-      //audio.stop();
-      var source = document.getElementById("audioSource");
-      audio.load();
-      source.src = "music/music" + Stage.stageList[Stage.stagePtr] + ".mp3";
-      Game.playMusic();
+      // var audio = document.getElementById("music");
+      // //audio.stop();
+      // var source = document.getElementById("audioSource");
+      // audio.load();
+      // source.src = "music/music" + Stage.stageList[Stage.stagePtr] + ".mp3";
+      // Game.playMusic();
       displayToast("下一關");
       if(Stage.stagePtr < Stage.stageList.length-1)
         setTimeout(Stage.changeStage, maxTime * 1000);
