@@ -1,4 +1,4 @@
-#sidebar                        { width: 18em; height: 40em; float: left; font-size: 0.825em; background-color: white; border: 1px solid white; padding: 1em; width: 22em; margin-right:20px; height: 36em; }
+#sidebar                        { width: 18em; height: 40em; float: left; font-size: 0.825em; padding: 1em; width: 22em; margin-right:20px; height: 36em; }
 #sidebar h2                     { color: black; text-align: center; margin: 0; }
 #sidebar .parts                 { padding-left: 1em; list-style-type: none; margin-bottom: 2em; text-align: right; }
 #sidebar .parts li a            { color: white; text-decoration: none; }
